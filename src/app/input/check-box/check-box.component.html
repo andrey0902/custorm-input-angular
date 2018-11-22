@@ -1,0 +1,15 @@
+<div class="md-checkbox">
+  <input
+    [id]="id"
+    type="checkbox"
+    [ngModel]="defaultValue"
+    [disabled]="disabled"
+    (ngModelChange)="onChange($event)"
+  >
+  <span class="check">
+    <img [src]="path" alt="">
+  </span>
+  <label class="box-label" [for]="id">
+    <ng-content></ng-content>
+  </label>
+</div>
