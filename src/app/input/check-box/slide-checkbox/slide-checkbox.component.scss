@@ -1,3 +1,4 @@
+@import "../../shared/style.variable";
 app-slide-box {
   outline: none;
 }
@@ -45,7 +46,7 @@ app-slide-box {
 
   // Checked-state
   > input:checked + .checkbox-point {
-    background: #1094fb;
+    background: $focus-blue;
   }
 
   > input:checked + .checkbox-point + span {

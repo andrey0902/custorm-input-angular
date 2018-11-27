@@ -24,8 +24,10 @@ let uniqueName = 0;
 export class RadioGroupComponent extends RadioBasedComponent implements OnDestroy {
   public groupName = `radio_group_name_${uniqueName++}`;
   public valueChange$ = new Subject<any>();
+  value = null;
   constructor(public cd: ChangeDetectorRef) {
     super(cd);
+    console.log('groupName', this.groupName);
   }
 
   doChange(data) {

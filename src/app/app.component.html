@@ -1,27 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <form [formGroup]="form" (ngSubmit)="save()" class="form-test">
-  <app-form-field>
+  <app-form-field [mode]="true">
     <app-label>My label Input</app-label>
     <input appInput word="let me do" formControlName="name" placeholder="new test" type="text">
     <app-input-error>
     </app-input-error>
   </app-form-field>
 
-  <!--<app-form-field>-->
-    <!--<app-label>My label</app-label>-->
-    <!--<app-checkbox appInput-->
-                  <!--formControlName="agree"-->
-                  <!--tabindex="1"-->
-                  <!--[path]="'./assets/check-mark.svg'"-->
-    <!--&gt;-->
-      <!--<span>-->
-        <!--some text-->
-      <!--</span>-->
-    <!--</app-checkbox>-->
-    <!--<app-input-error>-->
-    <!--</app-input-error>-->
-  <!--</app-form-field>-->
+  <app-form-field [mode]="false">
+    <app-label>My label Input</app-label>
+    <textarea appInput formControlName="name2" placeholder="new test">
+    </textarea>
+    <app-input-error>
+    </app-input-error>
+  </app-form-field>
+
+  <app-form-field>
+    <app-label>My label</app-label>
+    <app-checkbox appInput
+                  formControlName="agree"
+                  tabindex="1"
+                  [path]="'./assets/check-mark.svg'"
+    >
+      <span>
+        some text
+      </span>
+    </app-checkbox>
+    <app-input-error>
+    </app-input-error>
+  </app-form-field>
 
 
   <app-form-field>
@@ -38,6 +46,7 @@
     </app-input-error>
   </app-form-field>
 
+  <!--material style-->
   <app-form-field>
     <app-label>Label Radio</app-label>
     <app-radio-group formControlName="radio" appInput tabindex="2" >
@@ -49,9 +58,55 @@
     </app-input-error>
   </app-form-field>
 
+  <!--circle empty style-->
+  <app-form-field>
+    <app-label>Label Circle Radio</app-label>
+    <app-radio-group formControlName="radio2" appInput tabindex="3" >
+      <app-circle-radio-item [value]="5">student 1</app-circle-radio-item>
+      <app-circle-radio-item [value]="6">student 2</app-circle-radio-item>
+      <app-circle-radio-item [value]="7">student 3</app-circle-radio-item>
+    </app-radio-group>
+    <app-input-error>
+    </app-input-error>
+  </app-form-field>
+
+  <div style="width: 300px; margin: 50px auto;">
+    <app-form-field [mode]="true">
+      <app-label>Label Search</app-label>
+      <app-search-field [dataService]="testData"
+                        [itemTemplate]="custom"
+                        [startFrom]="0"
+                        (valueSearch)="OnSearch($event)"
+                        appInput
+                        [placeholder]="'my placeholder'"
+                        formControlName="search"
+      >[value]="'test'"</app-search-field>
+    </app-form-field>
+    <ng-template #custom let-data="item">
+      <div>
+      <span>
+        this is custom template for item {{data.name}}
+      </span>
+        <span>
+        id: {{data.id}}
+      </span>
+      </div>
+    </ng-template>
+  </div>
+
 
   <button type="submit">submit</button>
 </form>
 
 <button (click)="dis()">dis</button>
 <button (click)="enable()">enable</button>
+
+
+<app-search-field [dataService]="testData"
+                  [itemTemplate]="custom"
+                  [startFrom]="0"
+                  (valueSearch)="OnSearch($event)"
+                  appInput
+                  [placeholder]="'my placeholder'"
+                  class="no-border"
+>[value]="'test'"</app-search-field>

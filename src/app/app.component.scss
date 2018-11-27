@@ -1,3 +1,15 @@
 .form-test {
   padding: 30px;
 }
+
+::ng-deep {
+  .no-border {
+
+    .wrapper-field-search {
+      input[type="text"] {
+        border-color: red;
+      }
+    }
+  }
+}
+
